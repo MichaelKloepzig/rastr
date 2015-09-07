@@ -1,0 +1,13 @@
+.container {
+	display: flex;
+	width: 100%;
+}
+
+.generate-columns(@n, @i: 1) when (@i =< @n) {
+	.col-@{i} {
+		flex-grow: @i;
+	}
+	.generate-columns(@n, (@i + 1));
+}
+
+.generate-columns(12);
