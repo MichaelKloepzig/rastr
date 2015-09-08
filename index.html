@@ -6,55 +6,104 @@
 		body {
 			margin: 0;
 			padding: 1em;
-			background: #ddd;
+			background: #bbb;
 			font-family: sans-serif;
 		}
 		
 		.container {
-			margin: .5em 0;
+			margin: 1em 0;
 		}
 
 		[class^="col"] {
-			background-color: #fff;
-			text-align: center;
-			color: #ccc;
+			position: relative;
+			padding: 1.5em .5em .5em .5em;
+			background-color: rgba(255, 255, 255, .5);
+			font-size: .8rem;
+			color: rgba(0, 0, 0, .4);
+		}
+
+		[class^="col"]:before {
+			position: absolute;
+			top: .15em;
+			content: attr(class);
 		}
 		
-		.container > [class^="col"]:nth-child(even) {
-			background-color: #eee;
+		[class^="col"]:nth-child(even) {
+			background-color: rgba(0, 0, 0, .5);
 		}
 	</style>
 </head>
 <body>
 <h1>Rastr</h1>
+<h2>Simple Columns</h2>
 
 <div class="container">
-	<div class="col-12">col-12</div>
+	<div class="col-12"></div>
 </div>
 
 <div class="container">
-	<div class="col-6">col-6</div>
-	<div class="col-6">col-6</div>
+	<div class="col-6"></div>
+	<div class="col-6"></div>
 </div>
 
 <div class="container">
-	<div class="col-4">col-4</div>
-	<div class="col-4">col-4</div>
-	<div class="col-4">col-4</div>
+	<div class="col-4"></div>
+	<div class="col-4"></div>
+	<div class="col-4"></div>
 </div>
 
 <div class="container">
-	<div class="col-2">col-2</div>
-	<div class="col-4">col-4</div>
-	<div class="col-6">col-6</div>
+	<div class="col-2"></div>
+	<div class="col-4"></div>
+	<div class="col-6"></div>
 </div>
 
 <div class="container">
-	<div class="col-1">col-1</div>
-	<div class="col-2">col-2</div>
-	<div class="col-3">col-3</div>
-	<div class="col-4">col-4</div>
-	<div class="col-5">col-2</div>
+	<div class="col-3"></div>
+	<div class="col-9"></div>
+</div>
+
+<div class="container">
+	<div class="col-1"></div>
+	<div class="col-2"></div>
+	<div class="col-3"></div>
+	<div class="col-4"></div>
+	<div class="col-2"></div>
+</div>
+
+<div class="container">
+	<div class="col-1"></div>
+	<div class="col-1"></div>
+	<div class="col-1"></div>
+	<div class="col-1"></div>
+	<div class="col-1"></div>
+	<div class="col-1"></div>
+	<div class="col-1"></div>
+	<div class="col-1"></div>
+	<div class="col-1"></div>
+	<div class="col-1"></div>
+	<div class="col-1"></div>
+	<div class="col-1"></div>
+</div>
+
+<h2>Nested Columns</h2>
+
+<div class="container">
+	<div class="col-12">
+		<div class="col-6"></div>
+		<div class="col-6"></div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="col-6">
+		<div class="col-6"></div>
+		<div class="col-6"></div>
+	</div>
+	<div class="col-6">
+		<div class="col-6"></div>
+		<div class="col-6"></div>
+	</div>
 </div>
 
 </body>

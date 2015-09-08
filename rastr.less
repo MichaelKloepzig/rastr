@@ -1,11 +1,23 @@
-.container {
+html {
+	box-sizing: border-box;
+	overflow-y: scroll;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+.container, [class^="col"] {
 	display: flex;
+}
+
+.container {
 	width: 100%;
 }
 
 .generate-columns(@n, @i: 1) when (@i =< @n) {
 	.col-@{i} {
-		flex-grow: @i;
+		flex: @i;
 	}
 	.generate-columns(@n, (@i + 1));
 }

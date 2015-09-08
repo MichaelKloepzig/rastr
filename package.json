@@ -4,10 +4,10 @@
   "description": "A Flexbox Grid System",
   "author": "Michael Kloepzig",
   "dependencies": {
-    "browser-sync": "^2.9.1",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.0.1",
-    "gulp-less": "^3.0.3",
-    "gulp-minify-css": "^1.2.1"
+    "browser-sync": "latest",
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-less": "latest",
+    "gulp-minify-css": "latest"
   }
 }
