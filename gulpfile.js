@@ -1,20 +1,21 @@
 var gulp = require('gulp'),
-	autoprefixer = require('gulp-autoprefixer'),
-	less = require('gulp-less'),
-	minifyCSS = require('gulp-minify-css'),
+    plugins = require('gulp-load-plugins')(),
 	browserSync = require('browser-sync').create(),
 	reload = browserSync.reload,
-	rootPath = './',
-	pkg = require('./package.json')
+	rootPath = './'
 ;
 
 
 // LESS
 gulp.task('less', function() {
 	return gulp.src(rootPath + 'rastr.less')
-		.pipe(less())
-		.pipe(autoprefixer('> 0.5%', 'last 2 versions', 'ie 10'))
-		.pipe(minifyCSS())
+		.pipe(plugins.less({
+			strictMath: true
+		}))
+		.pipe(plugins.autoprefixer('> 0.5%', 'last 2 versions', 'ie 10'))
+		.pipe(plugins.cssnano({ safe: false, calc: false }))
+		.pipe(plugins.replace(/\.col-([^\}]*)\{-webkit-box-flex:1\}/g, ''))
+		.pipe(plugins.replace(/-webkit-box-flex:1;/g, ''))
 		.pipe(gulp.dest(rootPath))
 		.pipe(reload({ stream: true }))
 	;

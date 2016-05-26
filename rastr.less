@@ -1,25 +1,58 @@
-html {
-	box-sizing: border-box;
-	overflow-y: scroll;
-}
-
-*, *:before, *:after {
-	box-sizing: inherit;
-}
-
-.container, [class^="col"] {
+.container, [class^="col-"] {
 	display: flex;
+	flex-flow: row wrap;
+}
+
+/*
+support for ios 8.1-8.4 & android 4.2-4.3.
+needed in every column class, thus shortened here.
+cssnano will add this nonetheless to the actual classes - these rules have to be removed (with gulp).
+*/
+[class^="col-"] {
+	-webkit-box-flex: 1;
 }
 
 .container {
 	width: 100%;
 }
 
-.generate-columns(@n, @i: 1) when (@i =< @n) {
-	.col-@{i} {
-		flex: @i;
+
+@numberOfColumns: 12;
+
+@breakpointXXS: 20em;
+@breakpointXS: 30em;
+@breakpointSM: 40em;
+@breakpointMD: 50em;
+@breakpointLG: 64em;
+@breakpointXL: 80em;
+
+.generate-columns(@bpName, @n, @i: 1) when (@i < @n) {
+	.col@{bpName}-@{i} {
+		flex: 1 1 calc(@i/@n*100%);
 	}
-	.generate-columns(@n, (@i + 1));
+	.generate-columns(@bpName, @n, (@i + 1));
 }
 
-.generate-columns(12);
+.generate-columns(@bpName, @n, @i: 1) when (@i = @n) {
+	.col@{bpName}-@{i} {
+		flex: 1 1 100%;
+	}
+}
+
+.generate-breakpoint(@bpWidth, @bpName) {
+	@media (max-width: @bpWidth) {
+		.generate-columns(@bpName, @numberOfColumns);
+	}
+}
+
+.generate-columns(`null`, @numberOfColumns);
+
+@media (min-width: (@breakpointLG + .001em)) {
+	.generate-columns(-xl, @numberOfColumns);
+}
+
+.generate-breakpoint(@breakpointLG, -lg);
+.generate-breakpoint(@breakpointMD, -md);
+.generate-breakpoint(@breakpointSM, -sm);
+.generate-breakpoint(@breakpointXS, -xs);
+.generate-breakpoint(@breakpointXXS, -xxs);
