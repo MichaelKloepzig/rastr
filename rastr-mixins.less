@@ -1,0 +1,35 @@
+.generate-columns(@bpName, @n, @i: 1) when (@i < @n) {
+	.col@{bpName}-@{i} {
+		flex: 0 1 round((@i/@n*100%), 4);
+	}
+	.generate-columns(@bpName, @n, (@i + 1));
+}
+
+.generate-columns(@bpName, @n, @i: 1) when (@i = @n) {
+	.col@{bpName}-@{i} {
+		flex: 0 1 100%;
+	}
+}
+
+
+.generate-breakpoint(@bpWidth, @bpName) {
+	@media (max-width: @bpWidth) {
+		.generate-columns(@bpName, @numberOfColumns);
+	}
+}
+
+
+.generate-pushs(@bpName, @n, @i: 1) when (@i < @n) {
+	.push@{bpName}-@{i} {
+		margin-left: round((@i/@n*100%), 4);
+	}
+	.generate-pushs(@bpName, @n, (@i + 1));
+}
+
+
+.generate-pulls(@bpName, @n, @i: 1) when (@i < @n) {
+	.pull@{bpName}-@{i} {
+		margin-right: round((@i/@n*100%), 4);
+	}
+	.generate-pulls(@bpName, @n, (@i + 1));
+}

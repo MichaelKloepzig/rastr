@@ -1,58 +1,32 @@
-.container, [class^="col-"] {
-	display: flex;
-	flex-flow: row wrap;
-}
-
-/*
-support for ios 8.1-8.4 & android 4.2-4.3.
-needed in every column class, thus shortened here.
-cssnano will add this nonetheless to the actual classes - these rules have to be removed (with gulp).
-*/
-[class^="col-"] {
-	-webkit-box-flex: 1;
-}
-
-.container {
-	width: 100%;
-}
-
+/* The core grid system (required) */
 
 @numberOfColumns: 12;
 
-@breakpointXXS: 20em;
-@breakpointXS: 30em;
-@breakpointSM: 40em;
-@breakpointMD: 50em;
-@breakpointLG: 64em;
-@breakpointXL: 80em;
+@import "rastr-grid";
 
-.generate-columns(@bpName, @n, @i: 1) when (@i < @n) {
-	.col@{bpName}-@{i} {
-		flex: 1 1 calc(@i/@n*100%);
-	}
-	.generate-columns(@bpName, @n, (@i + 1));
-}
 
-.generate-columns(@bpName, @n, @i: 1) when (@i = @n) {
-	.col@{bpName}-@{i} {
-		flex: 1 1 100%;
-	}
-}
+/*
+Breakpoints (optional)
+Specifies a bunch of screen sizes at which different column counts in a row can be achieved.
+Uses em values to reflect the browser's font size settings (default is 16px). Respect your users!
+*/
 
-.generate-breakpoint(@bpWidth, @bpName) {
-	@media (max-width: @bpWidth) {
-		.generate-columns(@bpName, @numberOfColumns);
-	}
-}
+@breakpointXXS: 20em; /* 320px */
+@breakpointXS: 30em; /* 480px */
+@breakpointSM: 40em; /* 640px */
+@breakpointMD: 50em; /* 800px */
+@breakpointLG: 64em; /* 1024px */
+@breakpointXL: 80em; /* 1280px */
 
-.generate-columns(`null`, @numberOfColumns);
+@import "rastr-grid-breakpoints";
 
-@media (min-width: (@breakpointLG + .001em)) {
-	.generate-columns(-xl, @numberOfColumns);
-}
 
-.generate-breakpoint(@breakpointLG, -lg);
-.generate-breakpoint(@breakpointMD, -md);
-.generate-breakpoint(@breakpointSM, -sm);
-.generate-breakpoint(@breakpointXS, -xs);
-.generate-breakpoint(@breakpointXXS, -xxs);
+/* Offset columns to the right (optional) */
+
+@import "rastr-grid-push";
+
+
+
+/* Offset columns to the left (optional) */
+
+@import "rastr-grid-pull";

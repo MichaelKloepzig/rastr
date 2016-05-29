@@ -1,159 +1,207 @@
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="rastr.css">
+	<link rel="stylesheet" href="demo.css">
 	
-	<style type="text/css">
-		html {
-			box-sizing: border-box;
-			overflow-y: scroll;
+	<meta name="theme-color" content="#FFA000">
+	
+	<script type="text/javascript" async>
+		document.onreadystatechange = function () {
+			if(document.readyState === 'complete') {
+				var links = document.querySelectorAll('.navi-list-item');
+				var toggle = document.querySelector('#navi-toggle');
+				if(links !== null && toggle !== null) {
+					for(var i = 0, l = links.length; i < l; i++) {
+						links[i].addEventListener('click', function() {
+							toggle.checked = false;
+						});
+					}
+				}
+			}
 		}
-
-		*, *:before, *:after {
-			box-sizing: inherit;
-		}
-		
-		body {
-			margin: 0;
-			padding: 1em;
-			background: #61D7FF;
-			font-family: sans-serif;
-		}
-		
-		.container {
-			margin: 1em 0;
-		}
-
-		[class^="col-"] {
-			position: relative;
-			padding-top: 3em;
-			background-color: #00A5DC;
-			font-size: .8rem;
-			color: rgba(255, 255, 255, .7);
-			box-shadow: inset 0 0 0 1px #61D7FF;
-		}
-
-		[class^="col-"] > [class^="col-"] {
-			box-shadow: inset 0 0 0 1px #61D7FF, 0 0 0 1px #61D7FF;
-			background-color: #008BB9;
-		}
-
-		[class^="col-"]:before {
-			position: absolute;
-			top: .15em;
-			left: 3px;
-			content: attr(class);
-		}
-
-		[class^="col-x"] {
-			padding: .15em 1em 1em 3px;
-		}
-
-		[class^="col-x"]:before {
-			position: relative;
-		}
-	</style>
+	</script>
 </head>
 <body>
-<h1>Rastr</h1>
-<h2>Simple Columns</h2>
 
-<div class="container">
-	<div class="col-12"></div>
-</div>
+<div class="page">
+	<input type="checkbox" class="navi-toggle" id="navi-toggle">
+	<label for="navi-toggle" class="navi-toggleBtn"></label>
+	<nav class="navi">
+		<ul class="navi-list">
+			<li><a href="#intro" class="navi-list-item">Introduction</a></li>
+			<li><a href="#simple-columns" class="navi-list-item">Simple Columns</a></li>
+			<li><a href="#nested-rows" class="navi-list-item">Nested Columns</a></li>
+			<li><a href="#responsive" class="navi-list-item">Responsive Layout with Breakpoints</a></li>
+			<li><a href="#push-pull" class="navi-list-item">Push &amp; Pull</a></li>
+		</ul>
+	</nav>
+	<div class="content">
+		<header>
+			<h1>Rastr</h1>
+			<span>The no-nonsense grid system.</span>
+		</header>
+		
+		<section id="intro">
+			<h2>Introduction</h2>
+			<p>Rastr is a modular CSS grid system based on the flexbox layout.</p>
+			<p>The class names are inspired by the tried and trusted <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>, since they are short and concise. Some things are different though:</p>
+			<ul>
+				<li>Columns are built using the <a href="https://www.w3.org/TR/css-flexbox-1/" target="_blank">CSS Flexible Box Layout Module</a>. This allows for equal height columns and avoids floats and clearfixes.</li>
+				<li>No gutters around columns, because they suck. I used to fight them all the time and think it's better to manually add margins and paddings where appropriate.</li>
+				<li>All breakpoint values are em-based, thus honouring the browser's font-size settings. Respect your users! Read this <a href="http://terrillthompson.com/blog/589" target="_blank">excellent article</a> to learn more about that.</li>
+				<li>The modular nature of Rastr allows you to enjoy the whole package, or to select what fits your case. Just comment out the <code>@import</code> statements of the modules you don't need in rastr.less. The compiled .css file is about 1kb (minified &amp; gzipped) and gets considerably smaller when modules are left out.</li>
+			</ul>
+			
+		</section>
+		
+		<section id="simple-columns">
+			<h2>Simple Columns</h2>
+			
+			<p>Columns are wrapped by an element with <code>class="row"</code>. By default, any row can have up to 12 columns. This can be overwritten by changing <code>@numberOfColumns: 12</code> in rastr.less to your favourite number (greater than one).</p>
+			<p>The column class suffixes designate the column width in relation to the number of columns per row. E.g. if <code>@numberOfColumns</code> is 12, <code>class="col-6"</code> will give you a column with a width of 50%. <code>class="col-2"</code> corresponds 2 of 12, that is 16.67% and so on.</p>
+			<p>The column suffixes must always add up to <code>@numberOfColumns</code>, otherwise the row will not be filled completely or some columns wrap to the next line.</p>
 
-<div class="container">
-	<div class="col-6"></div>
-	<div class="col-6"></div>
-</div>
+			<div class="row">
+				<div class="col-12"></div>
+			</div>
 
-<div class="container">
-	<div class="col-4"></div>
-	<div class="col-4"></div>
-	<div class="col-4"></div>
-</div>
+			<div class="row">
+				<div class="col-6"></div>
+				<div class="col-6"></div>
+			</div>
 
-<div class="container">
-	<div class="col-2"></div>
-	<div class="col-4"></div>
-	<div class="col-6"></div>
-</div>
+			<div class="row">
+				<div class="col-4"></div>
+				<div class="col-4"></div>
+				<div class="col-4"></div>
+			</div>
 
-<div class="container">
-	<div class="col-3"></div>
-	<div class="col-9"></div>
-</div>
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-4"></div>
+				<div class="col-6"></div>
+			</div>
 
-<div class="container">
-	<div class="col-1"></div>
-	<div class="col-2"></div>
-	<div class="col-3"></div>
-	<div class="col-4"></div>
-	<div class="col-2"></div>
-</div>
+			<div class="row">
+				<div class="col-3"></div>
+				<div class="col-9"></div>
+			</div>
 
-<div class="container">
-	<div class="col-1"></div>
-	<div class="col-1"></div>
-	<div class="col-1"></div>
-	<div class="col-1"></div>
-	<div class="col-1"></div>
-	<div class="col-1"></div>
-	<div class="col-1"></div>
-	<div class="col-1"></div>
-	<div class="col-1"></div>
-	<div class="col-1"></div>
-	<div class="col-1"></div>
-	<div class="col-1"></div>
-</div>
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-2"></div>
+				<div class="col-3"></div>
+				<div class="col-4"></div>
+				<div class="col-2"></div>
+			</div>
 
-<h2>Nested Columns</h2>
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+			</div>
+		</section>
+		
+		<section id="nested-rows">
+			<h2>Nested Rows</h2>
 
-<div class="container">
-	<div class="col-12">
-		<div class="col-6"></div>
-		<div class="col-1"></div>
-		<div class="col-5"></div>
+			<div class="row">
+				<div class="col-12">
+					<div class="row">
+						<div class="col-6"></div>
+						<div class="col-1"></div>
+						<div class="col-5"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-6">
+					<div class="row">
+						<div class="col-6"></div>
+						<div class="col-6"></div>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="row">
+						<div class="col-4"></div>
+						<div class="col-4"></div>
+						<div class="col-4"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section id="responsive">
+			<h2>Responsive Layout with Breakpoints</h2>
+
+			<div class="row">
+				<div class="col-xs-12 col-4"></div>
+				<div class="col-xs-12 col-8"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-xxs-12 col-3 col-xl-2"></div>
+				<div class="col-xxs-12 col-6 col-xl-8"></div>
+				<div class="col-xxs-12 col-3 col-xl-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+				<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
+			</div>
+		</section>
+		
+		<section id="push-pull">
+			<h2>Push &amp; Pull</h2>
+
+			<div class="row">
+				<div class="col-2 push-5"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-2 push-2 pull-1"></div>
+				<div class="col-2"></div>
+				<div class="col-2 push-1"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-2 pull-1"></div>
+				<div class="col-2 pull-2"></div>
+				<div class="col-2 pull-1"></div>
+				<div class="col-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-1 pull-1"></div>
+				<div class="col-1 pull-1"></div>
+				<div class="col-1 pull-1"></div>
+				<div class="col-1 push-1"></div>
+				<div class="col-1 push-1"></div>
+				<div class="col-1 push-1"></div>
+			</div>
+		</section>
 	</div>
-</div>
-
-<div class="container">
-	<div class="col-6">
-		<div class="col-6"></div>
-		<div class="col-6"></div>
-	</div>
-	<div class="col-6">
-		<div class="col-4"></div>
-		<div class="col-4"></div>
-		<div class="col-4"></div>
-	</div>
-</div>
-
-<h2>Responsive Layout</h2>
-
-<div class="container">
-	<div class="col-xs-12 col-4"></div>
-	<div class="col-xs-12 col-8"></div>
-</div>
-
-<div class="container">
-	<div class="col-xxs-12 col-3 col-xl-2"></div>
-	<div class="col-xxs-12 col-6 col-xl-8"></div>
-	<div class="col-xxs-12 col-3 col-xl-2"></div>
-</div>
-
-<div class="container">
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
-	<div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-2 col-xl-1"></div>
 </div>
 
 </body>

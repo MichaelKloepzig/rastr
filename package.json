@@ -1,7 +1,7 @@
 {
   "name": "rastr",
   "version": "0.0.2",
-  "description": "A Flexbox Grid System",
+  "description": "The no-nonsense grid system.",
   "author": "Michael Kloepzig",
   "dependencies": {
     "browser-sync": "latest",

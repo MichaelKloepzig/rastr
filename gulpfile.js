@@ -14,8 +14,8 @@ gulp.task('less', function() {
 		}))
 		.pipe(plugins.autoprefixer('> 0.5%', 'last 2 versions', 'ie 10'))
 		.pipe(plugins.cssnano({ safe: false, calc: false }))
-		.pipe(plugins.replace(/\.col-([^\}]*)\{-webkit-box-flex:1\}/g, ''))
-		.pipe(plugins.replace(/-webkit-box-flex:1;/g, ''))
+		.pipe(plugins.replace(/\.col-([^\}]*)\{-webkit-box-flex:0\}/g, '')) // remove redundant rules
+		.pipe(plugins.replace(/-webkit-box-flex:0;/g, '')) // remove redundant rules
 		.pipe(gulp.dest(rootPath))
 		.pipe(reload({ stream: true }))
 	;
@@ -36,7 +36,7 @@ gulp.task('watch', function() {
 		open: false
 	});
 
-	gulp.watch([rootPath + '*.html'], ['html']);
+	gulp.watch([rootPath + '*.html', rootPath + 'demo.css'], ['html']);
 	gulp.watch([rootPath + '*.less'], ['less']);
 });
 

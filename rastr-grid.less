@@ -1,0 +1,18 @@
+@import "rastr-mixins";
+
+
+.row {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+/*
+support for ios 8.1-8.4 & android 4.2-4.3.
+needed in every column class, thus shortened here.
+cssnano will add this nonetheless to the actual classes - these rules have to be removed (with gulp).
+*/
+[class^="col-"] {
+	align-items: flex-start;
+}
+
+.generate-columns(`null`, @numberOfColumns);
