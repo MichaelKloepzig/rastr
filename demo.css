@@ -28,6 +28,16 @@ h1 {
 
 h2 {
 	color: #FFA000;
+	line-height: 1.2;
+}
+
+a {
+	color: currentColor;
+	text-decoration: underline;
+}
+
+section > h2:first-of-type {
+	margin-top: 2.5em;
 }
 
 header {
@@ -190,7 +200,7 @@ header span {
 }
 
 section {
-	padding: 1em;
+	padding: 1em 1em 0 1em;
 }
 
 .row {
@@ -244,4 +254,64 @@ code {
 	padding: .15em .3em;
 	border-radius: .25em;
 	background: #ddd;
+}
+
+
+.codeBlock {
+	text-align: right;
+}
+
+.codeBlock pre {
+	display: none;
+	font-size: .9em;
+}
+
+.codeToggle {
+	display: none;
+}
+
+.codeToggle + label {
+	position: relative;
+	display: inline-block;
+	margin-top: 2em;
+	padding-left: 2em;
+	line-height: 1.1;
+	color: #666;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.codeToggle + label:before, .codeToggle + label:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	border-radius: .5em;
+	background-color: rgb(255, 150, 150);
+}
+
+.codeToggle + label:after {
+	width: 1.7em;
+	background-color: rgb(255, 200, 200);
+	z-index: -1;
+}
+
+.codeToggle:checked + label:before {
+	left: .7em;
+	background-color: rgb(120, 210, 120);
+}
+
+.codeToggle:checked + label:after {
+	background-color: rgb(170, 230, 170);
+}
+
+.codeToggle:checked + label + pre {
+	display: block;
+}
+
+.codeToggle + label:hover, .codeToggle + label:focus {
+	color: #333;
 }
