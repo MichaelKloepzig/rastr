@@ -36,6 +36,7 @@
 			<li><a href="#nested-rows" class="navi-list-item">Nested Columns</a></li>
 			<li><a href="#responsive" class="navi-list-item">Responsive Layout with Breakpoints</a></li>
 			<li><a href="#push-pull" class="navi-list-item">Push &amp; Pull</a></li>
+			<li><a href="#build" class="navi-list-item">Settings &amp; Build Process</a></li>
 		</ul>
 	</nav>
 	<div class="content">
@@ -372,6 +373,33 @@
 					</code>
 				</pre>
 			</div>
+		</section>
+		
+		<section id="build">
+			<h2>Settings &amp; Build Process</h2>
+			<p>Rastr is built with <a href="http://lesscss.org/">Less</a>. If you want to play around, change some of the options or remove a module, clone the repository first. Then pop up a terminal, <code>cd path/to/rastr</code>, <code>npm install</code> and <code>gulp</code>. Now you're ready to edit the less files. Changes will be detected automatically and built to rastr.css.</p>
+			<h3>Options</h3>
+			<p>rastr.less contains a couple of settings:</p>
+			<ul>
+				<li>
+					<p><code>@numberOfColumns: 12;</code></p>
+					<p>The number of columns per row. 12 is a reasonable choice appropriate for most use cases, but anything larger than two should work. Keep in mind that with larger numbers the size of rastr.css will grow.</p>
+				</li>
+				<li>
+					<p><code>@breakpointXXS: 20em;</code></p>
+					<p><code>@breakpointXS: 30em;</code></p>
+					<p><code>@breakpointSM: 40em;</code></p>
+					<p><code>@breakpointMD: 50em;</code></p>
+					<p><code>@breakpointLG: 64em;</code></p>
+					<p><code>@breakpointXL: 80em;</code></p>
+					<p>The screen widths for each breakpoint used in the column classnames: <code>col-[breakpoint-identifier]-[column-count]</code>.</p>
+					<p>The default values reflect commonly used screen sizes - but keep in mind, that these breakpoints should be considered as an rough orientation. They ignore a vast diversity of device resolutions.</p>
+					<p>If you don't need breakpoints, comment out the line <code>@import "rastr-grid-breakpoints";</code>.</p>
+				</li>
+				<li>
+					<p>If you don't want to push or pull columns, comment out the lines <code>@import "rastr-grid-push";</code> and <code>@import "rastr-grid-pull";</code>, respectively.</p>
+				</li>
+			</ul>
 		</section>
 		<footer>
 			<p>Rastr is made with &#x2764; by <a href="https://www.michael-kloepzig.de" target="_blank">Michael Klöpzig</a>.</p>
