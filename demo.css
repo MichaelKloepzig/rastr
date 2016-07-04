@@ -195,16 +195,21 @@ header span {
 	}
 }
 
+section, footer {
+	padding: 1em 1em 0 1em;
+}
+
+footer {
+	padding-bottom: 2em;
+	color: #666;
+}
+
 .content section:first-of-type {
 	padding-top: 5em;
 }
 
 .content section:last-of-type {
 	padding-bottom: 5em;
-}
-
-section {
-	padding: 1em 1em 0 1em;
 }
 
 .row {
