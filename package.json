@@ -1,0 +1,15 @@
+{
+  "name": "rastr",
+  "version": "0.0.2",
+  "description": "The no-nonsense grid system.",
+  "author": "Michael Kloepzig",
+  "dependencies": {
+    "browser-sync": "latest",
+    "gulp": "latest",
+    "gulp-load-plugins": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-less": "latest",
+    "gulp-cssnano": "latest",
+    "gulp-replace": "latest"
+  }
+}
