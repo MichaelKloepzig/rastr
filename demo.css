@@ -199,6 +199,10 @@ header span {
 	padding-top: 5em;
 }
 
+.content section:last-of-type {
+	padding-bottom: 5em;
+}
+
 section {
 	padding: 1em 1em 0 1em;
 }
