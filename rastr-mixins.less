@@ -1,6 +1,7 @@
 .generate-columns(@bpName, @n, @i: 1) when (@i < @n) {
 	.col@{bpName}-@{i} {
 		flex: 0 1 round((@i/@n*100%), 4);
+		max-width: round((@i/@n*100%), 4);
 	}
 	.generate-columns(@bpName, @n, (@i + 1));
 }
@@ -8,6 +9,7 @@
 .generate-columns(@bpName, @n, @i: 1) when (@i = @n) {
 	.col@{bpName}-@{i} {
 		flex: 0 1 100%;
+		max-width: 100%;
 	}
 }
 
