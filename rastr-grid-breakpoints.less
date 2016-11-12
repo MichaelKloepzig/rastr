@@ -1,10 +1,11 @@
 @import "rastr-mixins";
 
 
-@media (min-width: (@breakpointLG + .001em)) {
-	.generate-columns(-xl, @numberOfColumns);
+@media (min-width: (@breakpointXL + .001em)) {
+	.generate-columns(-xxl, @numberOfColumns);
 }
 
+.generate-breakpoint(@breakpointXL, -xl);
 .generate-breakpoint(@breakpointLG, -lg);
 .generate-breakpoint(@breakpointMD, -md);
 .generate-breakpoint(@breakpointSM, -sm);
