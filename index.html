@@ -242,7 +242,7 @@
 		
 		<section id="responsive">
 			<h2>Responsive Layout with Breakpoints</h2>
-			<p>For those who like to use breakpoints when building responsive layouts, Rastr offers six of them called <code>xxs</code>, <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code> and <code>xl</code>. They are included in the col-* class names, changing the column size according to the available screen width.</p>
+			<p>For those who like to use breakpoints when building responsive layouts, Rastr offers six of them called <code>xxs</code>, <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code> and <code>xxl</code>. They are included in the col-* class names, changing the column size according to the available screen width.</p>
 			<p>The screen widths assigned to each breakpoint can be adjusted in rastr.less.</p>
 
 			<div class="row">
@@ -251,9 +251,9 @@
 			</div>
 
 			<div class="row">
-				<div class="col-xxs-12 col-3 col-xl-2"></div>
-				<div class="col-xxs-12 col-6 col-xl-8"></div>
-				<div class="col-xxs-12 col-3 col-xl-2"></div>
+				<div class="col-xxs-12 col-3 col-xl-2 col-xxl-1"></div>
+				<div class="col-xxs-12 col-6 col-xl-8 col-xxl-11"></div>
+				<div class="col-xxs-12 col-3 col-xl-2 col-xxl-1"></div>
 			</div>
 
 			<div class="row">
@@ -283,9 +283,9 @@
 							</div>
 				
 							<div class="row">
-								<div class="col-xxs-12 col-3 col-xl-2"></div>
-								<div class="col-xxs-12 col-6 col-xl-8"></div>
-								<div class="col-xxs-12 col-3 col-xl-2"></div>
+								<div class="col-xxs-12 col-3 col-xl-2 col-xxl-1"></div>
+								<div class="col-xxs-12 col-6 col-xl-8 col-xxl-11"></div>
+								<div class="col-xxs-12 col-3 col-xl-2 col-xxl-1"></div>
 							</div>
 				
 							<div class="row">
@@ -392,6 +392,7 @@
 					<p><code>@breakpointMD: 50em;</code></p>
 					<p><code>@breakpointLG: 64em;</code></p>
 					<p><code>@breakpointXL: 80em;</code></p>
+					<p>XXL indicates screens wider than <code>@breakpointXL</code></p>
 					<p>The screen widths for each breakpoint used in the column classnames: <code>col-[breakpoint-identifier]-[column-count]</code>.</p>
 					<p>The default values reflect commonly used screen sizes - but keep in mind that these breakpoints should be considered as a rough orientation. They ignore a vast diversity of device resolutions.</p>
 					<p>If you don't need breakpoints, comment out the line <code>@import "rastr-grid-breakpoints";</code>.</p>
