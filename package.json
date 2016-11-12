@@ -1,6 +1,6 @@
 {
   "name": "rastr",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The no-nonsense grid system.",
   "author": "Michael Kloepzig",
   "dependencies": {
